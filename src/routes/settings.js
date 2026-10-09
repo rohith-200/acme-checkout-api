@@ -11,7 +11,7 @@ const config = {
 
 // Deliberately vulnerable: merges untrusted request data with lodash 4.17.15.
 router.post("/", (req, res) => {
-  _.merge(config, req.body);
+  _.set(config, req.body.path, req.body.value);
   res.json({ settings: config });
 });
 
